@@ -1,0 +1,9 @@
+conda create --name mem_lm --clone base
+conda activate mem_lm
+pip install tqdm
+# installing pytorch with no CUDA
+# PyTorch - https://pytorch.org/get-started/locally/#start-locally
+conda install pytorch torchvision torchaudio cpuonly -c pytorch
+# installation of transformers
+# https://github.com/huggingface/transformers
+conda install -c huggingface transformers
