@@ -4,7 +4,9 @@ memorized samples from the training set.
 """
 
 import logging
+import time
 from utils.logging import get_log_object
+from utils.calculators import calculate_perplexity
 import argparse
 import numpy as np
 from pprint import pprint
@@ -17,19 +19,7 @@ from tqdm import tqdm
 logging.basicConfig(level='ERROR')
 log = get_log_object()
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-
-def calculate_perplexity(sentence, model, tokenizer):
-    """
-    exp(loss)
-    """
-    input_ids = torch.tensor(tokenizer.encode(sentence)).unsqueeze(0)
-    input_ids = input_ids.to(device)
-    with torch.no_grad():
-        outputs = model(input_ids, labels=input_ids)
-    loss, logits = outputs[:2]
-    return torch.exp(loss)
+local_device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
 def print_best(metric, samples, name1, scores1, name2=None, scores2=None, n=10):
@@ -76,28 +66,46 @@ def parse_commoncrawl(wet_file):
     return all_eng
 
 
-def main(top_k: int = 40, seq_len: int = 256):
+def main(top_k_int: int = 40, seq_len_int: int = 256, gpt2_size_str: str = 'gpt2-medium'):
     """
-    seq_len - number of tokens to generate
-    top_k - sample from the top_k tokens output by the model
+    seq_len_int - number of tokens to generate
+    top_k_int - sample from the top_k tokens output by the model
+    gpt2_size_str - size of GPT2 to load. Options: gpt2-medium, gpt2-xl
 
     """
-    log.info('Using device=%s', device)
-    print(f"using device: {device}")
+    log.info('Using device = %s', local_device)
+    print(f"using device: {local_device}")
 
     if args.internet_sampling:
         print("Loading common crawl...")
         cc = parse_commoncrawl(args.wet_file)
 
-    print("Loading GPT2...")
+    log.info('Getting GPT2 tokenizer...')
+    t1 = time.time()
     tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
+    t2 = time.time()
+    rounded_time = round(t2 - t1, 2)
+    log.info('GPT2 loaded in = %s seconds', str(rounded_time))
+
     tokenizer.padding_side = "left"
     tokenizer.pad_token = tokenizer.eos_token
 
-    model1 = GPT2LMHeadModel.from_pretrained('gpt2-medium', return_dict=True).to(device)
-    # model1 = GPT2LMHeadModel.from_pretrained('gpt2-xl', return_dict=True).to(device)
+    log.info('Getting pre-trained GPT2 model. Size = %s', gpt2_size_str)
+    t1 = time.time()
+    model1 = GPT2LMHeadModel.from_pretrained(gpt2_size_str, return_dict=True).to(local_device)
+    t2 = time.time()
+    rounded_time = round(t2 - t1, 2)
+    log.info('GPT2 of size =%s loaded in = %s seconds', gpt2_size_str, str(rounded_time))
+
     model1.config.pad_token_id = model1.config.eos_token_id
-    model2 = GPT2LMHeadModel.from_pretrained('gpt2', return_dict=True).to(device)
+
+    log.info('Getting pre-trained GPT2 model...')
+    t1 = time.time()
+    model2 = GPT2LMHeadModel.from_pretrained('gpt2', return_dict=True).to(local_device)
+    t2 = time.time()
+    rounded_time = round(t2 - t1, 2)
+    log.info('GPT2 loaded in = %s seconds', str(rounded_time))
+
     model1.eval()
     model2.eval()
 
@@ -105,9 +113,13 @@ def main(top_k: int = 40, seq_len: int = 256):
     scores = {"XL": [], "S": [], "Lower": [], "zlib": []}
 
     num_batches = int(np.ceil(args.N / args.batch_size))
+
+    # Set up progress bar based on number of samples to generate...
     with tqdm(total=args.N) as pbar:
+
+        # loop over number of batches to...
         for i in range(num_batches):
-            # encode the prompts
+            # ... encode the prompts ...
             if args.internet_sampling:
                 # pick a random 10-token prompt in common crawl 
 
@@ -138,11 +150,11 @@ def main(top_k: int = 40, seq_len: int = 256):
 
             # batch generation
             output_sequences = model1.generate(
-                input_ids=inputs['input_ids'].to(device),
-                attention_mask=inputs['attention_mask'].to(device),
-                max_length=input_len + seq_len,
+                input_ids=inputs['input_ids'].to(local_device),
+                attention_mask=inputs['attention_mask'].to(local_device),
+                max_length=input_len + seq_len_int,
                 do_sample=True,
-                top_k=top_k,
+                top_k=top_k_int,
                 top_p=1.0
             )
 
@@ -150,8 +162,8 @@ def main(top_k: int = 40, seq_len: int = 256):
 
             for text in texts:
                 # perplexity of GPT2-XL and GPT2-S
-                p1 = calculate_perplexity(text, model1, tokenizer)
-                p2 = calculate_perplexity(text, model2, tokenizer)
+                p1 = calculate_perplexity(text, model1, tokenizer, device=local_device)
+                p2 = calculate_perplexity(text, model2, tokenizer, device=local_device )
 
                 # perplexity on lower-case sample
                 p_lower = calculate_perplexity(text.lower(), model1, tokenizer)
