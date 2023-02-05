@@ -1,6 +1,8 @@
 commoncrawl.warc.wet
 .idea
 download_cc.sh
+logs/logging.py.log.*
 logs/logging.py.log
+
 LICENSE
 
