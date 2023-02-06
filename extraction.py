@@ -8,8 +8,8 @@ import time
 from utils.logging import get_log_object
 from utils.calculators import calculate_perplexity
 from utils.parsers import parse_arguments, parse_commoncrawl
+from utils.printers import print_best
 import numpy as np
-from pprint import pprint
 import sys
 import torch
 import zlib
@@ -20,30 +20,6 @@ logging.basicConfig(level='ERROR')
 log = get_log_object()
 
 local_device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-
-def print_best(metric_lst: list, samples_lst: list, name1_str: str, scores1_np: np.array,
-               name2_str: str = None, scores2_np: np.array = None, num_best_smpl: int = 10):
-    """
-    print the `n` best samples according to the given `metric`
-    """
-    idxs = np.argsort(metric_lst)[::-1][:num_best_smpl]
-
-    for i, idx in enumerate(idxs):
-
-        if scores2_np is not None:
-            print(f"{i + 1}: {name1_str}={scores1_np[idx]:.3f}, {name2_str}={scores2_np[idx]:.3f},"
-                  f"score={metric_lst[idx]:.3f}")
-            log.info('%i : %s = %.3f, %s = %.3f, score = %.3f', i+1, name1_str, scores1_np[idx],
-                     name2_str, scores2_np[idx], metric_lst[idx])
-        else:
-            print(f"{i + 1}: {name1_str}={scores1_np[idx]:.3f}, , score={metric_lst[idx]:.3f}")
-
-        print()
-        pprint(samples_lst[idx])
-        log.info('Sample %i in turn =  %s ', i+1, str(samples_lst[idx]))
-        print()
-        print()
 
 
 def main(top_k_int: int = 40, seq_len_int: int = 256, gpt2_size_str: str = 'gpt2-medium'):
@@ -181,28 +157,28 @@ def main(top_k_int: int = 40, seq_len_int: int = 256, gpt2_size_str: str = 'gpt2
     log.info('Sorting by log perplexity...')
     metric = -np.log(scores['XL'])
     log.info('======== top sample by XL perplexity ========')
-    print_best(metric, samples, 'PPL', scores['XL'])
+    print_best(log, metric, samples, 'PPL', scores['XL'])
     print()
     print()
 
     # Sort by ratio of log perplexities of S and XL models
     metric = np.log(scores["S"]) / np.log(scores["XL"])
     log.info('======== top sample by ratio of S and XL perplexities ========')
-    print_best(metric, samples, "PPL-XL", scores["XL"], "PPL-S", scores["S"])
+    print_best(log, metric, samples, "PPL-XL", scores["XL"], "PPL-S", scores["S"])
     print()
     print()
 
     # Sort by ratio of log perplexities of lower-case and normal-case perplexities 
     metric = np.log(scores["Lower"]) / np.log(scores["XL"])
     log.info('======== top sample by ratio of lower-case and normal-case perplexities: ========')
-    print_best(metric, samples, "PPL-XL", scores["XL"], "PPL-XL-Lower", scores["Lower"])
+    print_best(log, metric, samples, "PPL-XL", scores["XL"], "PPL-XL-Lower", scores["Lower"])
     print()
     print()
 
     # Sort by ratio of Zlib entropy and XL perplexity
     metric = scores["zlib"] / np.log(scores["XL"])
     log.info('======== top sample by ratio of Zlib entropy and XL perplexity: ========')
-    print_best(metric, samples, 'PPL-XL', scores['XL'], 'Zlib', scores['zlib'])
+    print_best(log, metric, samples, 'PPL-XL', scores['XL'], 'Zlib', scores['zlib'])
 
 
 if __name__ == '__main__':
