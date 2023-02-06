@@ -4,8 +4,10 @@ memorized samples from the training set.
 """
 
 import logging
+import time
 from utils.logging import get_log_object
-import argparse
+from utils.calculators import calculate_perplexity
+from utils.parsers import parse_arguments, parse_commoncrawl
 import numpy as np
 from pprint import pprint
 import sys
@@ -17,19 +19,7 @@ from tqdm import tqdm
 logging.basicConfig(level='ERROR')
 log = get_log_object()
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-
-def calculate_perplexity(sentence, model, tokenizer):
-    """
-    exp(loss)
-    """
-    input_ids = torch.tensor(tokenizer.encode(sentence)).unsqueeze(0)
-    input_ids = input_ids.to(device)
-    with torch.no_grad():
-        outputs = model(input_ids, labels=input_ids)
-    loss, logits = outputs[:2]
-    return torch.exp(loss)
+local_device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
 def print_best(metric, samples, name1, scores1, name2=None, scores2=None, n=10):
@@ -52,52 +42,46 @@ def print_best(metric, samples, name1, scores1, name2=None, scores2=None, n=10):
         print()
 
 
-def parse_commoncrawl(wet_file):
+def main(top_k_int: int = 40, seq_len_int: int = 256, gpt2_size_str: str = 'gpt2-medium'):
     """
-    Quick and ugly parsing of a WET file.
-    Tested for the May 2021 crawl.
-    """
-    with open(wet_file) as f:
-        lines = f.readlines()
-
-    start_idxs = [i for i in range(len(lines)) if "WARC/1.0" in lines[i]]
-
-    all_eng = ""
-
-    count_eng = 0
-    for i in range(len(start_idxs) - 1):
-        start = start_idxs[i]
-        end = start_idxs[i + 1]
-        if "WARC-Identified-Content-Language: eng" in lines[start + 7]:
-            count_eng += 1
-            for j in range(start + 10, end):
-                all_eng += lines[j]
-
-    return all_eng
-
-
-def main(top_k: int = 40, seq_len: int = 256):
-    """
-    seq_len - number of tokens to generate
-    top_k - sample from the top_k tokens output by the model
+    seq_len_int - number of tokens to generate
+    top_k_int - sample from the top_k tokens output by the model
+    gpt2_size_str - size of GPT2 to load. Options: gpt2-medium, gpt2-xl
 
     """
-    log.info('Using device=%s', device)
-    print(f"using device: {device}")
+    log.info('Using device = %s', local_device)
+    print(f"using device: {local_device}")
 
     if args.internet_sampling:
         print("Loading common crawl...")
         cc = parse_commoncrawl(args.wet_file)
 
-    print("Loading GPT2...")
+    log.info('Getting GPT2 tokenizer...')
+    t1 = time.time()
     tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
+    t2 = time.time()
+    rounded_time = round(t2 - t1, 2)
+    log.info('GPT2 loaded in = %s seconds', str(rounded_time))
+
     tokenizer.padding_side = "left"
     tokenizer.pad_token = tokenizer.eos_token
 
-    model1 = GPT2LMHeadModel.from_pretrained('gpt2-medium', return_dict=True).to(device)
-    # model1 = GPT2LMHeadModel.from_pretrained('gpt2-xl', return_dict=True).to(device)
+    log.info('Getting pre-trained GPT2 model. Size = %s', gpt2_size_str)
+    t1 = time.time()
+    model1 = GPT2LMHeadModel.from_pretrained(gpt2_size_str, return_dict=True).to(local_device)
+    t2 = time.time()
+    rounded_time = round(t2 - t1, 2)
+    log.info('GPT2 of size =%s loaded in = %s seconds', gpt2_size_str, str(rounded_time))
+
     model1.config.pad_token_id = model1.config.eos_token_id
-    model2 = GPT2LMHeadModel.from_pretrained('gpt2', return_dict=True).to(device)
+
+    log.info('Getting pre-trained GPT2 model...')
+    t1 = time.time()
+    model2 = GPT2LMHeadModel.from_pretrained('gpt2', return_dict=True).to(local_device)
+    t2 = time.time()
+    rounded_time = round(t2 - t1, 2)
+    log.info('GPT2 loaded in = %s seconds', str(rounded_time))
+
     model1.eval()
     model2.eval()
 
@@ -105,9 +89,14 @@ def main(top_k: int = 40, seq_len: int = 256):
     scores = {"XL": [], "S": [], "Lower": [], "zlib": []}
 
     num_batches = int(np.ceil(args.N / args.batch_size))
+    log.info('Number of batches to be used = %s', str(num_batches))
+
+    # Set up progress bar based on number of samples to generate...
     with tqdm(total=args.N) as pbar:
+
+        # loop over number of batches to...
         for i in range(num_batches):
-            # encode the prompts
+            # ... encode the prompts ...
             if args.internet_sampling:
                 # pick a random 10-token prompt in common crawl 
 
@@ -121,8 +110,11 @@ def main(top_k: int = 40, seq_len: int = 256):
                     prompt = " ".join(cc[r:r + 100].split(" ")[1:-1])
 
                     # make sure we get the same number of tokens for each prompt to enable batching
+
                     inputs = tokenizer(prompt, return_tensors="pt", max_length=input_len, truncation=True)
-                    if len(inputs['input_ids'][0]) == input_len:
+                    num_inp_tok = len(inputs['input_ids'][0])
+                    log.info('Number of inputs from tokenizer = %s', str(num_inp_tok))
+                    if num_inp_tok == input_len:
                         input_ids.append(inputs['input_ids'][0])
                         attention_mask.append(inputs['attention_mask'][0])
 
@@ -138,76 +130,80 @@ def main(top_k: int = 40, seq_len: int = 256):
 
             # batch generation
             output_sequences = model1.generate(
-                input_ids=inputs['input_ids'].to(device),
-                attention_mask=inputs['attention_mask'].to(device),
-                max_length=input_len + seq_len,
+                input_ids=inputs['input_ids'].to(local_device),
+                attention_mask=inputs['attention_mask'].to(local_device),
+                max_length=input_len + seq_len_int,
                 do_sample=True,
-                top_k=top_k,
+                top_k=top_k_int,
                 top_p=1.0
             )
 
             texts = tokenizer.batch_decode(output_sequences, skip_special_tokens=True)
 
+            log.info('Looping over texts...')
+            log.info('Total number of samples in corpus = %s', len(texts))
             for text in texts:
                 # perplexity of GPT2-XL and GPT2-S
-                p1 = calculate_perplexity(text, model1, tokenizer)
-                p2 = calculate_perplexity(text, model2, tokenizer)
+                # log.info('Computing perplexities for text in turn... ')
+                log.info('Computing perplexities for text in turn = %s ', str(text))
+                p1 = calculate_perplexity(text, model1, tokenizer, device=local_device)
+                log.info('Perplexity computed from model 1 = %s ', str(p1))
+                p2 = calculate_perplexity(text, model2, tokenizer, device=local_device)
+                log.info('Perplexity computed from model 2 = %s ', str(p2))
 
                 # perplexity on lower-case sample
-                p_lower = calculate_perplexity(text.lower(), model1, tokenizer)
+                log.info('Computing perplexity on lower case sample ...')
+                p_lower = calculate_perplexity(text.lower(), model1, tokenizer, device=local_device)
+                log.info('Perplexity for lower case sample = %s', str(p_lower))
 
-                # Zlib "entropy" of sample
+                log.info('Computing Zlib entropy of text sample ...')
                 zlib_entropy = len(zlib.compress(bytes(text, 'utf-8')))
+                log.info('Zlib entropy of sample = %s', str(zlib_entropy))
 
                 samples.append(text)
-                scores["XL"].append(p1)
-                scores["S"].append(p2)
-                scores["Lower"].append(p_lower)
-                scores["zlib"].append(zlib_entropy)
+                scores['XL'].append(p1)
+                scores['S'].append(p2)
+                scores['Lower'].append(p_lower)
+                scores['zlib'].append(zlib_entropy)
 
             pbar.update(args.batch_size)
 
-    scores["XL"] = np.asarray(scores["XL"])
-    scores["S"] = np.asarray(scores["S"])
-    scores["Lower"] = np.asarray(scores["Lower"])
-    scores["zlib"] = np.asarray(scores["zlib"])
+    scores['XL'] = np.asarray(scores['XL'])
+    scores['S'] = np.asarray(scores['S'])
+    scores['Lower'] = np.asarray(scores['Lower'])
+    scores['zlib'] = np.asarray(scores['zlib'])
 
     # Sort by perplexity
-    metric = -np.log(scores["XL"])
-    print(f"======== top sample by XL perplexity: ========")
-    print_best(metric, samples, "PPL", scores["XL"])
+    log.info('Sorting by log perplexity...')
+    metric = -np.log(scores['XL'])
+    log.info('======== top sample by XL perplexity ========')
+    print_best(metric, samples, 'PPL', scores['XL'])
     print()
     print()
 
     # Sort by ratio of log perplexities of S and XL models
     metric = np.log(scores["S"]) / np.log(scores["XL"])
-    print(f"======== top sample by ratio of S and XL perplexities: ========")
+    log.info('======== top sample by ratio of S and XL perplexities ========')
     print_best(metric, samples, "PPL-XL", scores["XL"], "PPL-S", scores["S"])
     print()
     print()
 
     # Sort by ratio of log perplexities of lower-case and normal-case perplexities 
     metric = np.log(scores["Lower"]) / np.log(scores["XL"])
-    print(f"======== top sample by ratio of lower-case and normal-case perplexities: ========")
+    log.info('======== top sample by ratio of lower-case and normal-case perplexities: ========')
     print_best(metric, samples, "PPL-XL", scores["XL"], "PPL-XL-Lower", scores["Lower"])
     print()
     print()
 
     # Sort by ratio of Zlib entropy and XL perplexity
     metric = scores["zlib"] / np.log(scores["XL"])
-    print(f"======== top sample by ratio of Zlib entropy and XL perplexity: ========")
-    print_best(metric, samples, "PPL-XL", scores["XL"], "Zlib", scores["zlib"])
-
-
-def parse_arguments(argv):
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--N', type=int, default=1000, help="Number of samples to generate")
-    parser.add_argument('--batch-size', type=int, default=10, help="Batch size for generation")
-    parser.add_argument('--internet-sampling', action='store_true', help="condition the generation using commoncrawl")
-    parser.add_argument('--wet-file', type=str, default=None, help="path to a commoncrawl WET file")
-    return parser.parse_args(argv)
+    log.info('======== top sample by ratio of Zlib entropy and XL perplexity: ========')
+    print_best(metric, samples, 'PPL-XL', scores['XL'], 'Zlib', scores['zlib'])
 
 
 if __name__ == '__main__':
+    log.info('Parsing arguments from prompt ...')
     args = parse_arguments(sys.argv[1:])
+    log.info('Arguments parsed = %s', str(args))
+
     main()
