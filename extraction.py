@@ -22,22 +22,26 @@ log = get_log_object()
 local_device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
-def print_best(metric, samples, name1, scores1, name2=None, scores2=None, n=10):
+def print_best(metric_lst: list, samples_lst: list, name1_str: str, scores1_np: np.array,
+               name2_str: str = None, scores2_np: np.array = None, num_best_smpl: int = 10):
     """
     print the `n` best samples according to the given `metric`
     """
-    idxs = np.argsort(metric)[::-1][:n]
+    idxs = np.argsort(metric_lst)[::-1][:num_best_smpl]
 
     for i, idx in enumerate(idxs):
-        if scores2 is not None:
-            print(f"{i + 1}: {name1}={scores1[idx]:.3f}, {name2}={scores2[idx]:.3f}, score={metric[idx]:.3f}")
+
+        if scores2_np is not None:
+            print(f"{i + 1}: {name1_str}={scores1_np[idx]:.3f}, {name2_str}={scores2_np[idx]:.3f},"
+                  f"score={metric_lst[idx]:.3f}")
+            log.info('%i : %s = %.3f, %s = %.3f, score = %.3f', i+1, name1_str, scores1_np[idx],
+                     name2_str, scores2_np[idx], metric_lst[idx])
         else:
-            print(f"{i + 1}: {name1}={scores1[idx]:.3f}, , score={metric[idx]:.3f}")
+            print(f"{i + 1}: {name1_str}={scores1_np[idx]:.3f}, , score={metric_lst[idx]:.3f}")
 
         print()
-        # for line in samples[idx].split("\n"):
-        #    print(f"\t {line.rstrip()}")
-        pprint(samples[idx])
+        pprint(samples_lst[idx])
+        log.info('Sample %i in turn =  %s ', i+1, str(samples_lst[idx]))
         print()
         print()
 
@@ -146,14 +150,14 @@ def main(top_k_int: int = 40, seq_len_int: int = 256, gpt2_size_str: str = 'gpt2
                 # perplexity of GPT2-XL and GPT2-S
                 # log.info('Computing perplexities for text in turn... ')
                 log.info('Computing perplexities for text in turn = %s ', str(text))
-                p1 = calculate_perplexity(text, model1, tokenizer, device=local_device)
+                p1 = calculate_perplexity(text, model1, tokenizer, device_tch_dev=local_device)
                 log.info('Perplexity computed from model 1 = %s ', str(p1))
-                p2 = calculate_perplexity(text, model2, tokenizer, device=local_device)
+                p2 = calculate_perplexity(text, model2, tokenizer, device_tch_dev=local_device)
                 log.info('Perplexity computed from model 2 = %s ', str(p2))
 
                 # perplexity on lower-case sample
                 log.info('Computing perplexity on lower case sample ...')
-                p_lower = calculate_perplexity(text.lower(), model1, tokenizer, device=local_device)
+                p_lower = calculate_perplexity(text.lower(), model1, tokenizer, device_tch_dev=local_device)
                 log.info('Perplexity for lower case sample = %s', str(p_lower))
 
                 log.info('Computing Zlib entropy of text sample ...')
@@ -206,4 +210,10 @@ if __name__ == '__main__':
     args = parse_arguments(sys.argv[1:])
     log.info('Arguments parsed = %s', str(args))
 
+    log.info('Starting extraction...')
+    time_1 = time.time()
     main()
+    time_2 = time.time()
+    rounded_total_time = round(time_2 - time_1, 2)
+    rounded_total_time_str = str(round(rounded_total_time/60, 1))
+    log.info('Total time of execution in = %s minutes', rounded_total_time_str)
