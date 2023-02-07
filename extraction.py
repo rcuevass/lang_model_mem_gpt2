@@ -6,10 +6,10 @@ memorized samples from the training set.
 import logging
 import time
 from utils.logging import get_log_object
-from utils.calculators import calculate_perplexity
+from utils.calculators import compute_models_perplexity  # calculate_perplexity
 from utils.parsers import parse_arguments, parse_commoncrawl
+from utils.printers import print_best
 import numpy as np
-from pprint import pprint
 import sys
 import torch
 import zlib
@@ -20,26 +20,6 @@ logging.basicConfig(level='ERROR')
 log = get_log_object()
 
 local_device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-
-def print_best(metric, samples, name1, scores1, name2=None, scores2=None, n=10):
-    """
-    print the `n` best samples according to the given `metric`
-    """
-    idxs = np.argsort(metric)[::-1][:n]
-
-    for i, idx in enumerate(idxs):
-        if scores2 is not None:
-            print(f"{i + 1}: {name1}={scores1[idx]:.3f}, {name2}={scores2[idx]:.3f}, score={metric[idx]:.3f}")
-        else:
-            print(f"{i + 1}: {name1}={scores1[idx]:.3f}, , score={metric[idx]:.3f}")
-
-        print()
-        # for line in samples[idx].split("\n"):
-        #    print(f"\t {line.rstrip()}")
-        pprint(samples[idx])
-        print()
-        print()
 
 
 def main(top_k_int: int = 40, seq_len_int: int = 256, gpt2_size_str: str = 'gpt2-medium'):
@@ -84,9 +64,6 @@ def main(top_k_int: int = 40, seq_len_int: int = 256, gpt2_size_str: str = 'gpt2
 
     model1.eval()
     model2.eval()
-
-    samples = []
-    scores = {"XL": [], "S": [], "Lower": [], "zlib": []}
 
     num_batches = int(np.ceil(args.N / args.batch_size))
     log.info('Number of batches to be used = %s', str(num_batches))
@@ -142,63 +119,38 @@ def main(top_k_int: int = 40, seq_len_int: int = 256, gpt2_size_str: str = 'gpt2
 
             log.info('Looping over texts...')
             log.info('Total number of samples in corpus = %s', len(texts))
-            for text in texts:
-                # perplexity of GPT2-XL and GPT2-S
-                # log.info('Computing perplexities for text in turn... ')
-                log.info('Computing perplexities for text in turn = %s ', str(text))
-                p1 = calculate_perplexity(text, model1, tokenizer, device=local_device)
-                log.info('Perplexity computed from model 1 = %s ', str(p1))
-                p2 = calculate_perplexity(text, model2, tokenizer, device=local_device)
-                log.info('Perplexity computed from model 2 = %s ', str(p2))
 
-                # perplexity on lower-case sample
-                log.info('Computing perplexity on lower case sample ...')
-                p_lower = calculate_perplexity(text.lower(), model1, tokenizer, device=local_device)
-                log.info('Perplexity for lower case sample = %s', str(p_lower))
-
-                log.info('Computing Zlib entropy of text sample ...')
-                zlib_entropy = len(zlib.compress(bytes(text, 'utf-8')))
-                log.info('Zlib entropy of sample = %s', str(zlib_entropy))
-
-                samples.append(text)
-                scores['XL'].append(p1)
-                scores['S'].append(p2)
-                scores['Lower'].append(p_lower)
-                scores['zlib'].append(zlib_entropy)
+            lang_models_dict = {'model_1': model1, 'model_2': model2}
+            scores, samples = compute_models_perplexity(lang_models_dict, log, texts, tokenizer, local_device)
 
             pbar.update(args.batch_size)
-
-    scores['XL'] = np.asarray(scores['XL'])
-    scores['S'] = np.asarray(scores['S'])
-    scores['Lower'] = np.asarray(scores['Lower'])
-    scores['zlib'] = np.asarray(scores['zlib'])
 
     # Sort by perplexity
     log.info('Sorting by log perplexity...')
     metric = -np.log(scores['XL'])
     log.info('======== top sample by XL perplexity ========')
-    print_best(metric, samples, 'PPL', scores['XL'])
+    print_best(log, metric, samples, 'PPL', scores['XL'])
     print()
     print()
 
     # Sort by ratio of log perplexities of S and XL models
     metric = np.log(scores["S"]) / np.log(scores["XL"])
     log.info('======== top sample by ratio of S and XL perplexities ========')
-    print_best(metric, samples, "PPL-XL", scores["XL"], "PPL-S", scores["S"])
+    print_best(log, metric, samples, "PPL-XL", scores["XL"], "PPL-S", scores["S"])
     print()
     print()
 
     # Sort by ratio of log perplexities of lower-case and normal-case perplexities 
     metric = np.log(scores["Lower"]) / np.log(scores["XL"])
     log.info('======== top sample by ratio of lower-case and normal-case perplexities: ========')
-    print_best(metric, samples, "PPL-XL", scores["XL"], "PPL-XL-Lower", scores["Lower"])
+    print_best(log, metric, samples, "PPL-XL", scores["XL"], "PPL-XL-Lower", scores["Lower"])
     print()
     print()
 
     # Sort by ratio of Zlib entropy and XL perplexity
     metric = scores["zlib"] / np.log(scores["XL"])
     log.info('======== top sample by ratio of Zlib entropy and XL perplexity: ========')
-    print_best(metric, samples, 'PPL-XL', scores['XL'], 'Zlib', scores['zlib'])
+    print_best(log, metric, samples, 'PPL-XL', scores['XL'], 'Zlib', scores['zlib'])
 
 
 if __name__ == '__main__':
@@ -206,4 +158,10 @@ if __name__ == '__main__':
     args = parse_arguments(sys.argv[1:])
     log.info('Arguments parsed = %s', str(args))
 
+    log.info('Starting extraction...')
+    time_1 = time.time()
     main()
+    time_2 = time.time()
+    rounded_total_time = round(time_2 - time_1, 2)
+    rounded_total_time_str = str(round(rounded_total_time/60, 1))
+    log.info('Total time of execution in = %s minutes', rounded_total_time_str)
