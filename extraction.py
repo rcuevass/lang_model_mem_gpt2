@@ -8,11 +8,10 @@ import time
 from utils.logging import get_log_object
 from utils.calculators import compute_models_perplexity  # calculate_perplexity
 from utils.parsers import parse_arguments, parse_commoncrawl
-from utils.printers import print_best
+from utils.printers import print_sorted_samples  # print_best
 import numpy as np
 import sys
 import torch
-import zlib
 from transformers import GPT2Tokenizer, GPT2LMHeadModel
 from tqdm import tqdm
 
@@ -125,32 +124,7 @@ def main(top_k_int: int = 40, seq_len_int: int = 256, gpt2_size_str: str = 'gpt2
 
             pbar.update(args.batch_size)
 
-    # Sort by perplexity
-    log.info('Sorting by log perplexity...')
-    metric = -np.log(scores['XL'])
-    log.info('======== top sample by XL perplexity ========')
-    print_best(log, metric, samples, 'PPL', scores['XL'])
-    print()
-    print()
-
-    # Sort by ratio of log perplexities of S and XL models
-    metric = np.log(scores["S"]) / np.log(scores["XL"])
-    log.info('======== top sample by ratio of S and XL perplexities ========')
-    print_best(log, metric, samples, "PPL-XL", scores["XL"], "PPL-S", scores["S"])
-    print()
-    print()
-
-    # Sort by ratio of log perplexities of lower-case and normal-case perplexities 
-    metric = np.log(scores["Lower"]) / np.log(scores["XL"])
-    log.info('======== top sample by ratio of lower-case and normal-case perplexities: ========')
-    print_best(log, metric, samples, "PPL-XL", scores["XL"], "PPL-XL-Lower", scores["Lower"])
-    print()
-    print()
-
-    # Sort by ratio of Zlib entropy and XL perplexity
-    metric = scores["zlib"] / np.log(scores["XL"])
-    log.info('======== top sample by ratio of Zlib entropy and XL perplexity: ========')
-    print_best(log, metric, samples, 'PPL-XL', scores['XL'], 'Zlib', scores['zlib'])
+    print_sorted_samples(log, scores, samples)
 
 
 if __name__ == '__main__':
