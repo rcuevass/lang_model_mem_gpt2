@@ -1,0 +1,528 @@
+1: PPL=1.985, , score=-0.6851 To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video Your browser does not support JavaScript. Update it for a better user experience. Mom gets all black Runtime: 00:39 Views: 152380 REPORT CONTENT Rating: 4/5 (1,067 votes cast) ADD TO FAVORITES
+
+Your browser does not support JavaScript. Update it for a better user experience. Your browser does not support JavaScript. Update it for a better user experience.
+ 
+===================================================================================
+ 
+2: PPL=5.368, , score=-1.6802 New Orleans Saints wide receiver Brandin Cooks has lost his mother, and we are here to speak with Cooks about why he needs time with her at their home in California.
+
+The "Around The League Podcast" is now available on iTunes! Click here to listen and subscribe.
+ 
+===================================================================================
+ 
+3: PPL=6.711, , score=-1.9043 The following article is written by the author.
+
+By Ben Fong, Ph.D., an instructor in public health and epidemiology at the University of British Columbia.
+
+When it comes to mental health, there are more resources for patients than there is for health-care workers and other government health-care providers.
+
+For years, Canadian doctors and nurses, nurses, other health-care professionals and social service workers have often assumed patients are their primary carers.
+
+Today, it's clear that patients and their families are a much more important caretakers of the health-care system than previously assumed, according to a study released by the Canadian Mental Health Association (CMA).
+
+There is a disconnect between the expectation of care from the health-care system and the fact that patients and their families are the ultimate caretakers of the health-care system, the CMHA said in a report.
+
+These issues affect nearly half of adults in Canada who need mental-health care.
+
+The group is calling for greater mental-health-care funding and for better training for health-care providers who deal with people in distress.
+
+The CMHA's report offers some recommendations:
+
+Implement measures that improve mental health
+ 
+===================================================================================
+ 
+4: PPL=6.800, , score=-1.9174 The UESPWiki – Your source for The Elder Scrolls since 1995
+
+Omen
+
+Omen (also called the Eye of Ulysses) is an artifact discovered by Ulfric Stormcloak during his quest. It was created from the power of an Oblivion goddess and is associated with his family's fortune. It was once in possession of the Imperial family of Morrowind but was stolen by Ulfric as he attempted to reclaim his inheritance. The artifact eventually ended up on the battlefields of Ald'ruhn, in one of Ulfric's armies who had allied with the Stormcloaks.
+
+The Eye of Ulysses was eventually recovered as the only surviving object from the time of the Oblivion Crisis by High King Harkon I of Skyrim. This artifact can be seen on the battlefield in the battlefield at Coldharbour, and is now in the custody of Tiber Septim. Though he remains uncooperative with Ulfric, one of his son's retainers, Irenicus, has helped Ulfric reclaim the artifact to restore it to its former glory, having been promised Ulfric as a present by Harkon.
+
+In the game files, it is stated that the Eye is to remain
+ 
+===================================================================================
+ 
+5: PPL=8.146, , score=-2.0985 The American Jewish Committee (AJC) has expressed shock at the revelation that the Department of Justice, despite receiving more than half a billion dollars from Congress, and a $150 million a year from the FBI—not including its ongoing anti-terror programs—has not done a single meaningful investigation of what appears to be a major terrorist threat to America.
+
+In a statement sent out just after midnight, the AJC condemned the "fiasco" of how the White House and DHS did an "insufficient investigation of the threat of terrorism in the USA" and called upon Congress to "demand answers and accountability" from both parties.
+
+The AJC, along with other Jewish organizations — including the National Association of Reform Jewish Women and the Jewish Anti-Defamation League — are among those who have called on Congress to pass legislation declaring an "emergency" to provide the federal government with the resources and authority to investigate "radicalization of individuals in the U.S."
+
+"America is not a sanctuary for jihadis," AJC President Mark Krikorian told Haaretz in the wake of the White House report's release. "We cannot tolerate this situation and we cannot afford that government to not do the right thing. We need a federal investigation, as well
+ 
+===================================================================================
+ 
+6: PPL=8.437, , score=-2.1336 The number of Muslims in the UK has plummeted by about one million since the 1980s.
+
+Statistics from 2013 show there were approximately 1 million Muslims living in England, Wales and Scotland at the time of census results for 2015, which were published on Thursday.
+
+But just under 1 million Muslims in the UK remain - or 6.7 per cent of the population.
+
+On Monday, Labour MP and chair of Muslim Council of Britain Alok Madasani told Breitbart London the government's official figures were based on a very narrow selection of countries.
+
+In an exclusive interview with Breitbart London the former Labour MP also expressed concern that the British government has adopted its own version of "zero-tolerance" Islam.
+
+Madasani, who was appointed by David Cameron after he became Prime Minister in 2010, said: "They've got the worst record in terms of Islamophobia. Zero tolerance has been at the forefront of their national agenda for five years now. That's what's going to come out and people are looking to understand it's a false and false claim."
+
+Madasani said Muslims are being portrayed as extremists in the media, by the political establishment, and within political parties.
+
+He added the real problem lies with radicalising
+ 
+===================================================================================
+ 
+7: PPL=9.095, , score=-2.2087 I have a couple of issues before I will tell you if it is stable.
+
+I was running an old version of Firefox (4.1.1) with an unconfirmed remote bug. Since I use Firefox 4 I would not be able to use this web browser on Windows XP, OSX 10.6.6, or MacOS 9.1.2. (The Mac version I get the bug from is no longer available. However, if you visit the Mozilla Developers website to see a version of it earlier than 4.1.1, you will see that it has since been released.)
+
+Now the issues are resolved I have not had this bug for a month. I have the original Firefox, I don't have any of this other stuff. This is what I see on the site in all browsers:
+
+https://www.google.com/searchers?query=linux!q=&q=linux
+
+https://www.google.com/searchers?query=windows%2bcygwin!q=&q=cygwin
+
+I use Mac OSX 10.6.6 and I can download and install the update from the link. I run a Mac with version 10.
+ 
+===================================================================================
+ 
+8: PPL=9.144, , score=-2.2138 It's hard to find a lot of good advice on the topic of building custom desktop environments. I mean, we've talked about it before here on PCWorld, but I'm not surprised by the lack of a good place to start.
+
+Today we're going to talk about a few common mistakes I've experienced trying to achieve a custom PC environment:
+
+I wanted to run Ubuntu or Linux Mint in Ubuntu's default background
+
+My environment setup started up in Mac OS X when I installed Windows 10
+
+My environment setup started up in GNOME Shell when I tried to open LibreOffice in Ubuntu as another desktop environment, but that's another blog post altogether.
+
+In this post, though, we're focusing on several commonly encountered problems which have kept me from really getting to the end result I was looking for. Hopefully in future posts we'll cover something more specific.
+
+Why these problems?
+
+I've heard a lot of good and bad things about Ubuntu's (and by extension "GNOME's") new desktop environment, GNOME 3.22. But the reality of this version isn't nearly as inspiring as some of the positive things I've heard. So let's have a look at why.
+
+There are four major problems facing Ubuntu
+ 
+===================================================================================
+ 
+9: PPL=9.398, , score=-2.2409 He would have been considered a genius and won a Nobel Prize in physiology. He was one of a dozen children born to a family of Jewish professionals and was born when the Jewish State was still under occupation.
+
+In the 1980s, he became an academic and later a journalist, an experience he says he could not have enjoyed had he not been born in one of the two nations whose leaders he was most closely identified with.
+
+Yet he never felt more deeply tied to the Jewish state than now.
+
+He visited the West Bank in 2010 and stayed twice more. He said then that he felt he was not only part of the solution to Palestine's conflict, but one in which everyone – including his fellow Jews and Palestinians – could be involved.
+
+"We are all equal in our commitment to the cause of the two-State solution, to the creation of a one-State solution," he declared at the time. "So there are no limits to this commitment."
+
+The Israeli government and others continue to express confidence that the international community will not back off from efforts to end the two-state solution. President Barack Obama is expected to announce his first major initiative at the United Nations in April on the matter.
+
+Mr. Netanyahu has also taken
+ 
+===================================================================================
+ 
+10: PPL=9.605, , score=-2.26210 From Hearthstone Wiki
+
+Journey to Un'Goro isn't something you'd expect to see from a game as complicated and complex as Hearthstone. But you can expect an exciting encounter with the Burning-Tree Emissary and the rest of the tribe, all of whom will be in your corner, ready to crush anything that tries to kill you. But what you won't see is a lot in the way of cards that can be played, which might even be too powerful. As such, players can expect a lot, and a lot of fun.
+
+The Journey to Un'Goro card set has a huge range, including most of the most interesting and challenging cards, as well as two cards that don't fit into any of the above. Players can expect a variety of decks to appear, from aggressive decks that rely on removal, to aggressive decks that rely on the occasional taunt to put pressure on your opponents. Each deck will have its own distinct strategy and will have different win conditions.
+
+While the deck building portion is straightforward, the gameplay is even more intriguing at first glance. Players can expect to learn some basic tactics without having to get really far about it, and with just one game there, players will already have an idea about what works and
+ 
+===================================================================================
+ 
+1: PPL-XL=5.368, PPL-S=9.589,score=1.345
+1 New Orleans Saints wide receiver Brandin Cooks has lost his mother, and we are here to speak with Cooks about why he needs time with her at their home in California.
+
+The "Around The League Podcast" is now available on iTunes! Click here to listen and subscribe.
+ 
+===================================================================================
+ 
+2: PPL-XL=1.985, PPL-S=2.408,score=1.282
+2 To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video Your browser does not support JavaScript. Update it for a better user experience. Mom gets all black Runtime: 00:39 Views: 152380 REPORT CONTENT Rating: 4/5 (1,067 votes cast) ADD TO FAVORITES
+
+Your browser does not support JavaScript. Update it for a better user experience. Your browser does not support JavaScript. Update it for a better user experience.
+ 
+===================================================================================
+ 
+3: PPL-XL=6.800, PPL-S=9.945,score=1.198
+3 The UESPWiki – Your source for The Elder Scrolls since 1995
+
+Omen
+
+Omen (also called the Eye of Ulysses) is an artifact discovered by Ulfric Stormcloak during his quest. It was created from the power of an Oblivion goddess and is associated with his family's fortune. It was once in possession of the Imperial family of Morrowind but was stolen by Ulfric as he attempted to reclaim his inheritance. The artifact eventually ended up on the battlefields of Ald'ruhn, in one of Ulfric's armies who had allied with the Stormcloaks.
+
+The Eye of Ulysses was eventually recovered as the only surviving object from the time of the Oblivion Crisis by High King Harkon I of Skyrim. This artifact can be seen on the battlefield in the battlefield at Coldharbour, and is now in the custody of Tiber Septim. Though he remains uncooperative with Ulfric, one of his son's retainers, Irenicus, has helped Ulfric reclaim the artifact to restore it to its former glory, having been promised Ulfric as a present by Harkon.
+
+In the game files, it is stated that the Eye is to remain
+ 
+===================================================================================
+ 
+4: PPL-XL=10.079, PPL-S=15.116,score=1.175
+4 The National Association of School Districts says that it will ask President Barack Obama to declare a federal holiday honoring the lives of the police officers who were killed in the Dallas ambush in July — something the Obama administration resisted for years but finally agreed to this week after many high-profile public outcry.
+
+The association issued a statement saying that since the attacks, the country — and state governments — have seen an increase in shootings that would, in theory, have no political repercussions in communities that lack police for-profit schools.
+
+"The families of people murdered by police deserve an acknowledgement that they and their loved ones were in effect gunned down by the military-industrial complex with the full support of officials who should be in jail," the statement said. "Sadly, that is not how such recognition comes about.
+
+"It was a long fight and the National Association of School Districts did its part to end the use of excessive force with its action last week, requesting Obama declare July 9, 2016 the anniversary of the horrific shooting at a Texas church by police officers who were ambushed on the day of their deaths," the statement said.
+
+Though the American Civil Liberties Union has repeatedly said that using the federal holiday would cause schools to lose state funding, several states,
+ 
+===================================================================================
+ 
+5: PPL-XL=12.130, PPL-S=18.538,score=1.170
+5 New York, NY - July 13, 2012: The first ever annual World Championship of Motorcycling, the World Motorcyclist Day event, takes place this Saturday, July 13th.
+
+With over 450 riders from all over the world set to descend upon New York on that Saturday in an event sponsored by the World Motorcycle Council, this year brings along its own unique feature. The first time ever the event has hosted an American rider, it will be a tribute to all of the motorcycle icons and icons of motocross history: Frank Williams, Paul DiBlasio, Joe Bessie, Jack Dempsey, Tommy Baldwin, Tom Stumpf, Davey Burt Jr., Tim Meehan, Tommy Haas, Ron Lott, Phil Goss, Gary Weishaupt, Jimmy Hulme, Bobby Allison, Mike Bussard, Phil Davis, Tom Clements, John Daly, and many more.
+
+At this year's World Motorcyclist Day the two main competitors will be one another in the first World Championship of Motorcycling to date. It all kicks off at the Brooklyn Bridge parking garage and after the race, the riders head to the historic New York Harbor waterfront, where they will spend the first part of the afternoon sailing
+ 
+===================================================================================
+ 
+6: PPL-XL=9.692, PPL-S=14.047,score=1.163
+6 This review contains spoilers for Marvel's Guardians of the Galaxy!
+
+Star Wars: Guardians of the Galaxy may have been the best thing since the first Star Wars movie, but even Star Wars fans aren't allowed to have too much to do on this movie-centric series.
+
+Guardians of the Galaxy doesn't have that many laughs and doesn't have any major moments that would make you feel excited or nervous if you've been following the saga long enough. In fact, it felt completely normal this weekend, and despite being about three weeks since its first trailer was released, we all felt like we knew what was coming.
+
+I'll try to break it down in some detail here: The story opens up on the surface, when an evil team called The Collector, led by Drax the Destroyer, threatens to destroy every planet in the galaxy and is going with a plan of destruction that will leave everyone with only one choice: join them or die by their own hand. That's the big, bad villain, though.
+
+Before it gets to the big bad, Guardians has one more major plot point to tie up the film as the Guardians of the Galaxy assemble and battle against Drax. The crew, with the aid of the Red Skull, must overcome their
+ 
+===================================================================================
+ 
+7: PPL-XL=9.144, PPL-S=12.763,score=1.151
+7 It's hard to find a lot of good advice on the topic of building custom desktop environments. I mean, we've talked about it before here on PCWorld, but I'm not surprised by the lack of a good place to start.
+
+Today we're going to talk about a few common mistakes I've experienced trying to achieve a custom PC environment:
+
+I wanted to run Ubuntu or Linux Mint in Ubuntu's default background
+
+My environment setup started up in Mac OS X when I installed Windows 10
+
+My environment setup started up in GNOME Shell when I tried to open LibreOffice in Ubuntu as another desktop environment, but that's another blog post altogether.
+
+In this post, though, we're focusing on several commonly encountered problems which have kept me from really getting to the end result I was looking for. Hopefully in future posts we'll cover something more specific.
+
+Why these problems?
+
+I've heard a lot of good and bad things about Ubuntu's (and by extension "GNOME's") new desktop environment, GNOME 3.22. But the reality of this version isn't nearly as inspiring as some of the positive things I've heard. So let's have a look at why.
+
+There are four major problems facing Ubuntu
+ 
+===================================================================================
+ 
+8: PPL-XL=9.095, PPL-S=12.538,score=1.145
+8 I have a couple of issues before I will tell you if it is stable.
+
+I was running an old version of Firefox (4.1.1) with an unconfirmed remote bug. Since I use Firefox 4 I would not be able to use this web browser on Windows XP, OSX 10.6.6, or MacOS 9.1.2. (The Mac version I get the bug from is no longer available. However, if you visit the Mozilla Developers website to see a version of it earlier than 4.1.1, you will see that it has since been released.)
+
+Now the issues are resolved I have not had this bug for a month. I have the original Firefox, I don't have any of this other stuff. This is what I see on the site in all browsers:
+
+https://www.google.com/searchers?query=linux!q=&q=linux
+
+https://www.google.com/searchers?query=windows%2bcygwin!q=&q=cygwin
+
+I use Mac OSX 10.6.6 and I can download and install the update from the link. I run a Mac with version 10.
+ 
+===================================================================================
+ 
+9: PPL-XL=9.398, PPL-S=12.963,score=1.144
+9 He would have been considered a genius and won a Nobel Prize in physiology. He was one of a dozen children born to a family of Jewish professionals and was born when the Jewish State was still under occupation.
+
+In the 1980s, he became an academic and later a journalist, an experience he says he could not have enjoyed had he not been born in one of the two nations whose leaders he was most closely identified with.
+
+Yet he never felt more deeply tied to the Jewish state than now.
+
+He visited the West Bank in 2010 and stayed twice more. He said then that he felt he was not only part of the solution to Palestine's conflict, but one in which everyone – including his fellow Jews and Palestinians – could be involved.
+
+"We are all equal in our commitment to the cause of the two-State solution, to the creation of a one-State solution," he declared at the time. "So there are no limits to this commitment."
+
+The Israeli government and others continue to express confidence that the international community will not back off from efforts to end the two-state solution. President Barack Obama is expected to announce his first major initiative at the United Nations in April on the matter.
+
+Mr. Netanyahu has also taken
+ 
+===================================================================================
+ 
+10: PPL-XL=9.605, PPL-S=13.287,score=1.143
+10 From Hearthstone Wiki
+
+Journey to Un'Goro isn't something you'd expect to see from a game as complicated and complex as Hearthstone. But you can expect an exciting encounter with the Burning-Tree Emissary and the rest of the tribe, all of whom will be in your corner, ready to crush anything that tries to kill you. But what you won't see is a lot in the way of cards that can be played, which might even be too powerful. As such, players can expect a lot, and a lot of fun.
+
+The Journey to Un'Goro card set has a huge range, including most of the most interesting and challenging cards, as well as two cards that don't fit into any of the above. Players can expect a variety of decks to appear, from aggressive decks that rely on removal, to aggressive decks that rely on the occasional taunt to put pressure on your opponents. Each deck will have its own distinct strategy and will have different win conditions.
+
+While the deck building portion is straightforward, the gameplay is even more intriguing at first glance. Players can expect to learn some basic tactics without having to get really far about it, and with just one game there, players will already have an idea about what works and
+ 
+===================================================================================
+ 
+1: PPL-XL=1.985, PPL-XL-Lower=6.453,score=2.720
+1 To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video Your browser does not support JavaScript. Update it for a better user experience. Mom gets all black Runtime: 00:39 Views: 152380 REPORT CONTENT Rating: 4/5 (1,067 votes cast) ADD TO FAVORITES
+
+Your browser does not support JavaScript. Update it for a better user experience. Your browser does not support JavaScript. Update it for a better user experience.
+ 
+===================================================================================
+ 
+2: PPL-XL=5.368, PPL-XL-Lower=31.112,score=2.046
+2 New Orleans Saints wide receiver Brandin Cooks has lost his mother, and we are here to speak with Cooks about why he needs time with her at their home in California.
+
+The "Around The League Podcast" is now available on iTunes! Click here to listen and subscribe.
+ 
+===================================================================================
+ 
+3: PPL-XL=6.800, PPL-XL-Lower=16.184,score=1.452
+3 The UESPWiki – Your source for The Elder Scrolls since 1995
+
+Omen
+
+Omen (also called the Eye of Ulysses) is an artifact discovered by Ulfric Stormcloak during his quest. It was created from the power of an Oblivion goddess and is associated with his family's fortune. It was once in possession of the Imperial family of Morrowind but was stolen by Ulfric as he attempted to reclaim his inheritance. The artifact eventually ended up on the battlefields of Ald'ruhn, in one of Ulfric's armies who had allied with the Stormcloaks.
+
+The Eye of Ulysses was eventually recovered as the only surviving object from the time of the Oblivion Crisis by High King Harkon I of Skyrim. This artifact can be seen on the battlefield in the battlefield at Coldharbour, and is now in the custody of Tiber Septim. Though he remains uncooperative with Ulfric, one of his son's retainers, Irenicus, has helped Ulfric reclaim the artifact to restore it to its former glory, having been promised Ulfric as a present by Harkon.
+
+In the game files, it is stated that the Eye is to remain
+ 
+===================================================================================
+ 
+4: PPL-XL=8.146, PPL-XL-Lower=12.502,score=1.204
+4 The American Jewish Committee (AJC) has expressed shock at the revelation that the Department of Justice, despite receiving more than half a billion dollars from Congress, and a $150 million a year from the FBI—not including its ongoing anti-terror programs—has not done a single meaningful investigation of what appears to be a major terrorist threat to America.
+
+In a statement sent out just after midnight, the AJC condemned the "fiasco" of how the White House and DHS did an "insufficient investigation of the threat of terrorism in the USA" and called upon Congress to "demand answers and accountability" from both parties.
+
+The AJC, along with other Jewish organizations — including the National Association of Reform Jewish Women and the Jewish Anti-Defamation League — are among those who have called on Congress to pass legislation declaring an "emergency" to provide the federal government with the resources and authority to investigate "radicalization of individuals in the U.S."
+
+"America is not a sanctuary for jihadis," AJC President Mark Krikorian told Haaretz in the wake of the White House report's release. "We cannot tolerate this situation and we cannot afford that government to not do the right thing. We need a federal investigation, as well
+ 
+===================================================================================
+ 
+5: PPL-XL=8.437, PPL-XL-Lower=13.034,score=1.204
+5 The number of Muslims in the UK has plummeted by about one million since the 1980s.
+
+Statistics from 2013 show there were approximately 1 million Muslims living in England, Wales and Scotland at the time of census results for 2015, which were published on Thursday.
+
+But just under 1 million Muslims in the UK remain - or 6.7 per cent of the population.
+
+On Monday, Labour MP and chair of Muslim Council of Britain Alok Madasani told Breitbart London the government's official figures were based on a very narrow selection of countries.
+
+In an exclusive interview with Breitbart London the former Labour MP also expressed concern that the British government has adopted its own version of "zero-tolerance" Islam.
+
+Madasani, who was appointed by David Cameron after he became Prime Minister in 2010, said: "They've got the worst record in terms of Islamophobia. Zero tolerance has been at the forefront of their national agenda for five years now. That's what's going to come out and people are looking to understand it's a false and false claim."
+
+Madasani said Muslims are being portrayed as extremists in the media, by the political establishment, and within political parties.
+
+He added the real problem lies with radicalising
+ 
+===================================================================================
+ 
+6: PPL-XL=9.692, PPL-XL-Lower=15.354,score=1.203
+6 This review contains spoilers for Marvel's Guardians of the Galaxy!
+
+Star Wars: Guardians of the Galaxy may have been the best thing since the first Star Wars movie, but even Star Wars fans aren't allowed to have too much to do on this movie-centric series.
+
+Guardians of the Galaxy doesn't have that many laughs and doesn't have any major moments that would make you feel excited or nervous if you've been following the saga long enough. In fact, it felt completely normal this weekend, and despite being about three weeks since its first trailer was released, we all felt like we knew what was coming.
+
+I'll try to break it down in some detail here: The story opens up on the surface, when an evil team called The Collector, led by Drax the Destroyer, threatens to destroy every planet in the galaxy and is going with a plan of destruction that will leave everyone with only one choice: join them or die by their own hand. That's the big, bad villain, though.
+
+Before it gets to the big bad, Guardians has one more major plot point to tie up the film as the Guardians of the Galaxy assemble and battle against Drax. The crew, with the aid of the Red Skull, must overcome their
+ 
+===================================================================================
+ 
+7: PPL-XL=6.711, PPL-XL-Lower=9.534,score=1.184
+7 The following article is written by the author.
+
+By Ben Fong, Ph.D., an instructor in public health and epidemiology at the University of British Columbia.
+
+When it comes to mental health, there are more resources for patients than there is for health-care workers and other government health-care providers.
+
+For years, Canadian doctors and nurses, nurses, other health-care professionals and social service workers have often assumed patients are their primary carers.
+
+Today, it's clear that patients and their families are a much more important caretakers of the health-care system than previously assumed, according to a study released by the Canadian Mental Health Association (CMA).
+
+There is a disconnect between the expectation of care from the health-care system and the fact that patients and their families are the ultimate caretakers of the health-care system, the CMHA said in a report.
+
+These issues affect nearly half of adults in Canada who need mental-health care.
+
+The group is calling for greater mental-health-care funding and for better training for health-care providers who deal with people in distress.
+
+The CMHA's report offers some recommendations:
+
+Implement measures that improve mental health
+ 
+===================================================================================
+ 
+8: PPL-XL=12.130, PPL-XL-Lower=19.101,score=1.182
+8 New York, NY - July 13, 2012: The first ever annual World Championship of Motorcycling, the World Motorcyclist Day event, takes place this Saturday, July 13th.
+
+With over 450 riders from all over the world set to descend upon New York on that Saturday in an event sponsored by the World Motorcycle Council, this year brings along its own unique feature. The first time ever the event has hosted an American rider, it will be a tribute to all of the motorcycle icons and icons of motocross history: Frank Williams, Paul DiBlasio, Joe Bessie, Jack Dempsey, Tommy Baldwin, Tom Stumpf, Davey Burt Jr., Tim Meehan, Tommy Haas, Ron Lott, Phil Goss, Gary Weishaupt, Jimmy Hulme, Bobby Allison, Mike Bussard, Phil Davis, Tom Clements, John Daly, and many more.
+
+At this year's World Motorcyclist Day the two main competitors will be one another in the first World Championship of Motorcycling to date. It all kicks off at the Brooklyn Bridge parking garage and after the race, the riders head to the historic New York Harbor waterfront, where they will spend the first part of the afternoon sailing
+ 
+===================================================================================
+ 
+9: PPL-XL=10.079, PPL-XL-Lower=14.730,score=1.164
+9 The National Association of School Districts says that it will ask President Barack Obama to declare a federal holiday honoring the lives of the police officers who were killed in the Dallas ambush in July — something the Obama administration resisted for years but finally agreed to this week after many high-profile public outcry.
+
+The association issued a statement saying that since the attacks, the country — and state governments — have seen an increase in shootings that would, in theory, have no political repercussions in communities that lack police for-profit schools.
+
+"The families of people murdered by police deserve an acknowledgement that they and their loved ones were in effect gunned down by the military-industrial complex with the full support of officials who should be in jail," the statement said. "Sadly, that is not how such recognition comes about.
+
+"It was a long fight and the National Association of School Districts did its part to end the use of excessive force with its action last week, requesting Obama declare July 9, 2016 the anniversary of the horrific shooting at a Texas church by police officers who were ambushed on the day of their deaths," the statement said.
+
+Though the American Civil Liberties Union has repeatedly said that using the federal holiday would cause schools to lose state funding, several states,
+ 
+===================================================================================
+ 
+10: PPL-XL=10.536, PPL-XL-Lower=15.399,score=1.161
+10 The world is full of people who are convinced they belong among the most influential people in the world. But some people just don't quite fit. Here are five people who don't come across as being at the center of everything.
+ 
+===================================================================================
+ 
+1: PPL-XL=1.985, Zlib=242.000,score=353.034
+1 To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video Your browser does not support JavaScript. Update it for a better user experience. Mom gets all black Runtime: 00:39 Views: 152380 REPORT CONTENT Rating: 4/5 (1,067 votes cast) ADD TO FAVORITES
+
+Your browser does not support JavaScript. Update it for a better user experience. Your browser does not support JavaScript. Update it for a better user experience.
+ 
+===================================================================================
+ 
+2: PPL-XL=8.146, Zlib=695.000,score=331.344
+2 The American Jewish Committee (AJC) has expressed shock at the revelation that the Department of Justice, despite receiving more than half a billion dollars from Congress, and a $150 million a year from the FBI—not including its ongoing anti-terror programs—has not done a single meaningful investigation of what appears to be a major terrorist threat to America.
+
+In a statement sent out just after midnight, the AJC condemned the "fiasco" of how the White House and DHS did an "insufficient investigation of the threat of terrorism in the USA" and called upon Congress to "demand answers and accountability" from both parties.
+
+The AJC, along with other Jewish organizations — including the National Association of Reform Jewish Women and the Jewish Anti-Defamation League — are among those who have called on Congress to pass legislation declaring an "emergency" to provide the federal government with the resources and authority to investigate "radicalization of individuals in the U.S."
+
+"America is not a sanctuary for jihadis," AJC President Mark Krikorian told Haaretz in the wake of the White House report's release. "We cannot tolerate this situation and we cannot afford that government to not do the right thing. We need a federal investigation, as well
+ 
+===================================================================================
+ 
+3: PPL-XL=8.437, Zlib=683.000,score=320.268
+3 The number of Muslims in the UK has plummeted by about one million since the 1980s.
+
+Statistics from 2013 show there were approximately 1 million Muslims living in England, Wales and Scotland at the time of census results for 2015, which were published on Thursday.
+
+But just under 1 million Muslims in the UK remain - or 6.7 per cent of the population.
+
+On Monday, Labour MP and chair of Muslim Council of Britain Alok Madasani told Breitbart London the government's official figures were based on a very narrow selection of countries.
+
+In an exclusive interview with Breitbart London the former Labour MP also expressed concern that the British government has adopted its own version of "zero-tolerance" Islam.
+
+Madasani, who was appointed by David Cameron after he became Prime Minister in 2010, said: "They've got the worst record in terms of Islamophobia. Zero tolerance has been at the forefront of their national agenda for five years now. That's what's going to come out and people are looking to understand it's a false and false claim."
+
+Madasani said Muslims are being portrayed as extremists in the media, by the political establishment, and within political parties.
+
+He added the real problem lies with radicalising
+ 
+===================================================================================
+ 
+4: PPL-XL=6.711, Zlib=600.000,score=315.175
+4 The following article is written by the author.
+
+By Ben Fong, Ph.D., an instructor in public health and epidemiology at the University of British Columbia.
+
+When it comes to mental health, there are more resources for patients than there is for health-care workers and other government health-care providers.
+
+For years, Canadian doctors and nurses, nurses, other health-care professionals and social service workers have often assumed patients are their primary carers.
+
+Today, it's clear that patients and their families are a much more important caretakers of the health-care system than previously assumed, according to a study released by the Canadian Mental Health Association (CMA).
+
+There is a disconnect between the expectation of care from the health-care system and the fact that patients and their families are the ultimate caretakers of the health-care system, the CMHA said in a report.
+
+These issues affect nearly half of adults in Canada who need mental-health care.
+
+The group is calling for greater mental-health-care funding and for better training for health-care providers who deal with people in distress.
+
+The CMHA's report offers some recommendations:
+
+Implement measures that improve mental health
+ 
+===================================================================================
+ 
+5: PPL-XL=10.079, Zlib=714.000,score=309.029
+5 The National Association of School Districts says that it will ask President Barack Obama to declare a federal holiday honoring the lives of the police officers who were killed in the Dallas ambush in July — something the Obama administration resisted for years but finally agreed to this week after many high-profile public outcry.
+
+The association issued a statement saying that since the attacks, the country — and state governments — have seen an increase in shootings that would, in theory, have no political repercussions in communities that lack police for-profit schools.
+
+"The families of people murdered by police deserve an acknowledgement that they and their loved ones were in effect gunned down by the military-industrial complex with the full support of officials who should be in jail," the statement said. "Sadly, that is not how such recognition comes about.
+
+"It was a long fight and the National Association of School Districts did its part to end the use of excessive force with its action last week, requesting Obama declare July 9, 2016 the anniversary of the horrific shooting at a Texas church by police officers who were ambushed on the day of their deaths," the statement said.
+
+Though the American Civil Liberties Union has repeatedly said that using the federal holiday would cause schools to lose state funding, several states,
+ 
+===================================================================================
+ 
+6: PPL-XL=6.800, Zlib=577.000,score=301.014
+6 The UESPWiki – Your source for The Elder Scrolls since 1995
+
+Omen
+
+Omen (also called the Eye of Ulysses) is an artifact discovered by Ulfric Stormcloak during his quest. It was created from the power of an Oblivion goddess and is associated with his family's fortune. It was once in possession of the Imperial family of Morrowind but was stolen by Ulfric as he attempted to reclaim his inheritance. The artifact eventually ended up on the battlefields of Ald'ruhn, in one of Ulfric's armies who had allied with the Stormcloaks.
+
+The Eye of Ulysses was eventually recovered as the only surviving object from the time of the Oblivion Crisis by High King Harkon I of Skyrim. This artifact can be seen on the battlefield in the battlefield at Coldharbour, and is now in the custody of Tiber Septim. Though he remains uncooperative with Ulfric, one of his son's retainers, Irenicus, has helped Ulfric reclaim the artifact to restore it to its former glory, having been promised Ulfric as a present by Harkon.
+
+In the game files, it is stated that the Eye is to remain
+ 
+===================================================================================
+ 
+7: PPL-XL=9.398, Zlib=669.000,score=298.599
+7 He would have been considered a genius and won a Nobel Prize in physiology. He was one of a dozen children born to a family of Jewish professionals and was born when the Jewish State was still under occupation.
+
+In the 1980s, he became an academic and later a journalist, an experience he says he could not have enjoyed had he not been born in one of the two nations whose leaders he was most closely identified with.
+
+Yet he never felt more deeply tied to the Jewish state than now.
+
+He visited the West Bank in 2010 and stayed twice more. He said then that he felt he was not only part of the solution to Palestine's conflict, but one in which everyone – including his fellow Jews and Palestinians – could be involved.
+
+"We are all equal in our commitment to the cause of the two-State solution, to the creation of a one-State solution," he declared at the time. "So there are no limits to this commitment."
+
+The Israeli government and others continue to express confidence that the international community will not back off from efforts to end the two-state solution. President Barack Obama is expected to announce his first major initiative at the United Nations in April on the matter.
+
+Mr. Netanyahu has also taken
+ 
+===================================================================================
+ 
+8: PPL-XL=9.144, Zlib=625.000,score=282.403
+8 It's hard to find a lot of good advice on the topic of building custom desktop environments. I mean, we've talked about it before here on PCWorld, but I'm not surprised by the lack of a good place to start.
+
+Today we're going to talk about a few common mistakes I've experienced trying to achieve a custom PC environment:
+
+I wanted to run Ubuntu or Linux Mint in Ubuntu's default background
+
+My environment setup started up in Mac OS X when I installed Windows 10
+
+My environment setup started up in GNOME Shell when I tried to open LibreOffice in Ubuntu as another desktop environment, but that's another blog post altogether.
+
+In this post, though, we're focusing on several commonly encountered problems which have kept me from really getting to the end result I was looking for. Hopefully in future posts we'll cover something more specific.
+
+Why these problems?
+
+I've heard a lot of good and bad things about Ubuntu's (and by extension "GNOME's") new desktop environment, GNOME 3.22. But the reality of this version isn't nearly as inspiring as some of the positive things I've heard. So let's have a look at why.
+
+There are four major problems facing Ubuntu
+ 
+===================================================================================
+ 
+9: PPL-XL=9.692, Zlib=622.000,score=273.852
+9 This review contains spoilers for Marvel's Guardians of the Galaxy!
+
+Star Wars: Guardians of the Galaxy may have been the best thing since the first Star Wars movie, but even Star Wars fans aren't allowed to have too much to do on this movie-centric series.
+
+Guardians of the Galaxy doesn't have that many laughs and doesn't have any major moments that would make you feel excited or nervous if you've been following the saga long enough. In fact, it felt completely normal this weekend, and despite being about three weeks since its first trailer was released, we all felt like we knew what was coming.
+
+I'll try to break it down in some detail here: The story opens up on the surface, when an evil team called The Collector, led by Drax the Destroyer, threatens to destroy every planet in the galaxy and is going with a plan of destruction that will leave everyone with only one choice: join them or die by their own hand. That's the big, bad villain, though.
+
+Before it gets to the big bad, Guardians has one more major plot point to tie up the film as the Guardians of the Galaxy assemble and battle against Drax. The crew, with the aid of the Red Skull, must overcome their
+ 
+===================================================================================
+ 
+10: PPL-XL=9.605, Zlib=610.000,score=269.645
+10 From Hearthstone Wiki
+
+Journey to Un'Goro isn't something you'd expect to see from a game as complicated and complex as Hearthstone. But you can expect an exciting encounter with the Burning-Tree Emissary and the rest of the tribe, all of whom will be in your corner, ready to crush anything that tries to kill you. But what you won't see is a lot in the way of cards that can be played, which might even be too powerful. As such, players can expect a lot, and a lot of fun.
+
+The Journey to Un'Goro card set has a huge range, including most of the most interesting and challenging cards, as well as two cards that don't fit into any of the above. Players can expect a variety of decks to appear, from aggressive decks that rely on removal, to aggressive decks that rely on the occasional taunt to put pressure on your opponents. Each deck will have its own distinct strategy and will have different win conditions.
+
+While the deck building portion is straightforward, the gameplay is even more intriguing at first glance. Players can expect to learn some basic tactics without having to get really far about it, and with just one game there, players will already have an idea about what works and
+ 
+===================================================================================
+ 

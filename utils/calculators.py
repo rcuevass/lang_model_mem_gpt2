@@ -25,7 +25,10 @@ def compute_models_perplexity(lang_models_dict: dict, log_obj, texts, tokenizer,
     for text in texts:
         # perplexity of GPT2-XL and GPT2-S
         # log.info('Computing perplexities for text in turn... ')
-        log_obj.info('Computing perplexities for text in turn = %s ', str(text))
+        len_text_turn = len(text.split())
+        log_obj.info('Computing perplexities for text in turn ...')
+        log_obj.info('Length of  text in turn = %s ', str(len_text_turn))
+        log_obj.info('First 50 characters of text = %s ', str(text)[:51])
         p1 = calculate_perplexity(text, model1, tokenizer, device_tch_dev=local_device)
         log_obj.info('Perplexity computed from model 1 = %s ', str(p1))
         p2 = calculate_perplexity(text, model2, tokenizer, device_tch_dev=local_device)

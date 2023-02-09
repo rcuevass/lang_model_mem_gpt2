@@ -6,19 +6,19 @@ memorized samples from the training set.
 import logging
 import time
 from utils.logging import get_log_object
-from utils.calculators import compute_models_perplexity  # calculate_perplexity
+from utils.calculators import compute_models_perplexity
 from utils.parsers import parse_arguments, parse_commoncrawl
-from utils.printers import print_best
+from utils.printers import print_sorted_samples
 import numpy as np
 import sys
 import torch
-import zlib
 from transformers import GPT2Tokenizer, GPT2LMHeadModel
 from tqdm import tqdm
 
 logging.basicConfig(level='ERROR')
 log = get_log_object()
 
+log.info('Detecting local device...')
 local_device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
@@ -43,12 +43,15 @@ def main(top_k_int: int = 40, seq_len_int: int = 256, gpt2_size_str: str = 'gpt2
     rounded_time = round(t2 - t1, 2)
     log.info('GPT2 loaded in = %s seconds', str(rounded_time))
 
+    log.info('Selecting padding side...')
     tokenizer.padding_side = "left"
+    log.info('Padding side set to = %s', tokenizer.padding_side)
     tokenizer.pad_token = tokenizer.eos_token
 
     log.info('Getting pre-trained GPT2 model. Size = %s', gpt2_size_str)
     t1 = time.time()
     model1 = GPT2LMHeadModel.from_pretrained(gpt2_size_str, return_dict=True).to(local_device)
+
     t2 = time.time()
     rounded_time = round(t2 - t1, 2)
     log.info('GPT2 of size =%s loaded in = %s seconds', gpt2_size_str, str(rounded_time))
@@ -72,11 +75,13 @@ def main(top_k_int: int = 40, seq_len_int: int = 256, gpt2_size_str: str = 'gpt2
     with tqdm(total=args.N) as pbar:
 
         # loop over number of batches to...
+        log.info(' Looping over %s batches...', num_batches)
+        log.info('Internet sampling set to = %s', str(args.internet_sampling))
         for i in range(num_batches):
             # ... encode the prompts ...
             if args.internet_sampling:
-                # pick a random 10-token prompt in common crawl 
-
+                # pick a random 10-token prompt in common crawl
+                log.info('Internet sampling detected...')
                 input_len = 10
                 input_ids = []
                 attention_mask = []
@@ -84,7 +89,9 @@ def main(top_k_int: int = 40, seq_len_int: int = 256, gpt2_size_str: str = 'gpt2
                 while len(input_ids) < args.batch_size:
                     # take some random words in common crawl
                     r = np.random.randint(0, len(cc))
+                    log.info('Using the following prompt ... ')
                     prompt = " ".join(cc[r:r + 100].split(" ")[1:-1])
+                    log.info('prompt = %s', prompt)
 
                     # make sure we get the same number of tokens for each prompt to enable batching
 
@@ -101,11 +108,19 @@ def main(top_k_int: int = 40, seq_len_int: int = 256, gpt2_size_str: str = 'gpt2
                 # the actual truncated prompts
                 prompts = tokenizer.batch_decode(inputs['input_ids'], skip_special_tokens=True)
             else:
+                log.info('No internet sampling detected...')
+                log.info('Batch size from argument = %s', str(args.batch_size))
                 prompts = ["<|endoftext|>"] * args.batch_size
+                log.info('Prompts used = %s', str(prompts))
+
                 input_len = 1
+                log.info('Getting inputs from prompts tokenization ... ')
                 inputs = tokenizer(prompts, return_tensors="pt", padding=True)
+                log.info('Inputs obtained from tokenizer ...')
 
             # batch generation
+            log.info('Performing batch generation ...')
+
             output_sequences = model1.generate(
                 input_ids=inputs['input_ids'].to(local_device),
                 attention_mask=inputs['attention_mask'].to(local_device),
@@ -114,6 +129,7 @@ def main(top_k_int: int = 40, seq_len_int: int = 256, gpt2_size_str: str = 'gpt2
                 top_k=top_k_int,
                 top_p=1.0
             )
+            log.info('Batch generation completed ...')
 
             texts = tokenizer.batch_decode(output_sequences, skip_special_tokens=True)
 
@@ -125,32 +141,7 @@ def main(top_k_int: int = 40, seq_len_int: int = 256, gpt2_size_str: str = 'gpt2
 
             pbar.update(args.batch_size)
 
-    # Sort by perplexity
-    log.info('Sorting by log perplexity...')
-    metric = -np.log(scores['XL'])
-    log.info('======== top sample by XL perplexity ========')
-    print_best(log, metric, samples, 'PPL', scores['XL'])
-    print()
-    print()
-
-    # Sort by ratio of log perplexities of S and XL models
-    metric = np.log(scores["S"]) / np.log(scores["XL"])
-    log.info('======== top sample by ratio of S and XL perplexities ========')
-    print_best(log, metric, samples, "PPL-XL", scores["XL"], "PPL-S", scores["S"])
-    print()
-    print()
-
-    # Sort by ratio of log perplexities of lower-case and normal-case perplexities 
-    metric = np.log(scores["Lower"]) / np.log(scores["XL"])
-    log.info('======== top sample by ratio of lower-case and normal-case perplexities: ========')
-    print_best(log, metric, samples, "PPL-XL", scores["XL"], "PPL-XL-Lower", scores["Lower"])
-    print()
-    print()
-
-    # Sort by ratio of Zlib entropy and XL perplexity
-    metric = scores["zlib"] / np.log(scores["XL"])
-    log.info('======== top sample by ratio of Zlib entropy and XL perplexity: ========')
-    print_best(log, metric, samples, 'PPL-XL', scores['XL'], 'Zlib', scores['zlib'])
+    print_sorted_samples(log, scores, samples)
 
 
 if __name__ == '__main__':
