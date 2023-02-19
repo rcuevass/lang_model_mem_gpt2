@@ -36,6 +36,7 @@ def print_best(file_obj, log_object, metric_lst: list, samples_lst: list, name1_
 def print_sorted_samples(log_object, scores_dict, samples,  file_name='output/extracted_samples.txt'):
     file_obj = open(file_name, 'w')
     # Sort by perplexity
+    # See section 6.1 - Perplexity: the perplexity of the largest GPT-2 model
     log_object.info('Sorting by log perplexity...')
     metric = -np.log(scores_dict['XL'])
     log_object.info('======== top sample by XL perplexity ========')
@@ -44,6 +45,8 @@ def print_sorted_samples(log_object, scores_dict, samples,  file_name='output/ex
     print()
 
     # Sort by ratio of log perplexities of S and XL models
+    # See section 6.1 - Small: the ratio of log-perplexities of the largest GPT-2
+    # model and the Small GPT-2 model
     metric = np.log(scores_dict["S"]) / np.log(scores_dict["XL"])
     log_object.info('======== top sample by ratio of S and XL perplexities ========')
     print_best(file_obj, log_object, metric, samples, "PPL-XL", scores_dict["XL"], "PPL-S", scores_dict["S"])
@@ -51,6 +54,8 @@ def print_sorted_samples(log_object, scores_dict, samples,  file_name='output/ex
     print()
 
     # Sort by ratio of log perplexities of lower-case and normal-case perplexities
+    # See section 6.1 - Lowercase: the ratio of perplexities of the GPT-2 model
+    # on the original sample and on the lower cased sample
     metric = np.log(scores_dict["Lower"]) / np.log(scores_dict["XL"])
     log_object.info('======== top sample by ratio of lower-case and normal-case perplexities: ========')
     print_best(file_obj, log_object, metric, samples, "PPL-XL", scores_dict["XL"], "PPL-XL-Lower", scores_dict["Lower"])
@@ -58,6 +63,8 @@ def print_sorted_samples(log_object, scores_dict, samples,  file_name='output/ex
     print()
 
     # Sort by ratio of Zlib entropy and XL perplexity
+    # See section 6.1 - zlib: the ratio of the (log) of the GPT-2 perplexity and the
+    # zlib entropy (as computed by compressing the text).
     metric = scores_dict["zlib"] / np.log(scores_dict["XL"])
     log_object.info('======== top sample by ratio of Zlib entropy and XL perplexity: ========')
     print_best(file_obj, log_object, metric, samples, 'PPL-XL', scores_dict['XL'], 'Zlib', scores_dict['zlib'])

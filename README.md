@@ -6,9 +6,12 @@
 Repository to experiment on language model memorization.
 
 ### Source and references
-The code in this repository is a refactored version of the 
+
+* The code in this repository is an in-progress refactored version of the 
 [Training data extraction from GPT-2](https://github.com/ftramer/LM_Memorization)
 repository. 
+* Papers related to the work tested with this code can be found in the [references](https://github.com/rcuevass/lang_model_mem_gpt2/tree/main/references) folder of this repo.
+* The folder [output](https://github.com/rcuevass/lang_model_mem_gpt2/tree/dev/output) contains examples of training data extracted from GPT2 language model.
 
 ### Setup 
 
