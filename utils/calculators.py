@@ -3,9 +3,14 @@ import zlib
 import numpy as np
 
 
-def calculate_perplexity(sentence: str, model, tokenizer, device_tch_dev: torch.device) -> torch:
+def calculate_perplexity(sentence: str, model: torch, tokenizer, device_tch_dev: torch.device) -> torch:
     """
-    exp(loss)
+    Function used to compute exponential loss (perplexity) for a given sentence
+    :param sentence: string capturing the sentence given for which perplexity will be computed
+    :param model: pytorch models used during calculation
+    :param tokenizer: pytorch tokenizer used a priori for calculation of perplexity
+    :param device_tch_dev: device used during execution of all code: CPU vs. GPU
+    :return: exponential loss (perplexity) computed from pytorch methods
     """
     input_ids = torch.tensor(tokenizer.encode(sentence)).unsqueeze(0)
     input_ids = input_ids.to(device_tch_dev)
@@ -15,7 +20,17 @@ def calculate_perplexity(sentence: str, model, tokenizer, device_tch_dev: torch.
     return torch.exp(loss)
 
 
-def compute_models_perplexity(lang_models_dict: dict, log_obj, texts, tokenizer, local_device: torch.device) -> tuple:
+def compute_models_perplexity(lang_models_dict: dict, log_obj, texts: list, tokenizer,
+                              local_device: torch.device) -> tuple:
+    """
+    Function that computes perplexity for given language models, and zlib compression entropy.
+    :param lang_models_dict: directory capturing different LM used for calculation of perplexities
+    :param log_obj: object used to update logging of code execution
+    :param texts: list of texts for which different perplexities (based on models) will be computed
+    :param tokenizer: pytorch tokenizer used a priory the perplexity calculation
+    :param local_device: device used during execution of all code: CPU vs. GPU
+    :return: tuple of dictionary (perplexity from different models) and list (texts)
+    """
     scores_dict = {"XL": [], "S": [], "Lower": [], "zlib": []}
     samples = []
     model1 = lang_models_dict['model_1']
@@ -39,16 +54,19 @@ def compute_models_perplexity(lang_models_dict: dict, log_obj, texts, tokenizer,
         p_lower = calculate_perplexity(text.lower(), model1, tokenizer, device_tch_dev=local_device)
         log_obj.info('Perplexity for lower case sample = %s', str(p_lower))
 
+        # zlib compression entropy...
         log_obj.info('Computing Zlib entropy of text sample ...')
         zlib_entropy = len(zlib.compress(bytes(text, 'utf-8')))
         log_obj.info('Zlib entropy of sample = %s', str(zlib_entropy))
 
+        # update samples and dictionary of perplexities...
         samples.append(text)
         scores_dict['XL'].append(p1)
         scores_dict['S'].append(p2)
         scores_dict['Lower'].append(p_lower)
         scores_dict['zlib'].append(zlib_entropy)
 
+    # cast perplexities in dictionary as numpy arrays...
     scores_dict['XL'] = np.asarray(scores_dict['XL'])
     scores_dict['S'] = np.asarray(scores_dict['S'])
     scores_dict['Lower'] = np.asarray(scores_dict['Lower'])

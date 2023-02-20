@@ -1,10 +1,10 @@
 """
-Generate samples with GPT-2 and filter out those that are likely to be
-memorized samples from the training set.
+Refactored code to exemplify the extraction of samples to be memorized by GPT-2
 """
 
 import logging
 import time
+# utils is a custom module included to make the main code more compact
 from utils.logging import get_log_object
 from utils.calculators import compute_models_perplexity
 from utils.parsers import parse_arguments, parse_commoncrawl
@@ -13,6 +13,7 @@ import numpy as np
 import sys
 import torch
 from transformers import GPT2Tokenizer, GPT2LMHeadModel
+# to display progress bar
 from tqdm import tqdm
 
 logging.basicConfig(level='ERROR')

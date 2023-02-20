@@ -17,3 +17,9 @@ repository.
 
 It is recommended to setup a conda virtual environment with the pytorch and Transformers libraries.
 The file [setup.txt](https://github.com/rcuevass/lang_model_mem_gpt2/blob/main/setup.txt) specifies how to accomplish this setup.
+
+### Code execution
+
+Run the following command withing the virtual conda environment setup:
+
+ `python extraction.py --N 100 --batch-size 20`
